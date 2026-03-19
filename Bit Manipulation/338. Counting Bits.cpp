@@ -1,3 +1,45 @@
+O(n)
+class Solution {
+public:
+    vector<int> countBits(int n) {
+        vector<int> dp(n + 1);
+        
+        for (int i = 0; i <= n; i++) {
+            dp[i] = dp[i >> 1] + (i & 1);
+        }
+
+        return dp;
+    }
+};
+
+
+Binary numbers are not separate objects.
+Each number:
+
+=>either comes from i >> 1 (shift structure)
+=>or reduces to i & (i - 1) (bit removal)
+
+two dp formulas
+
+===
+Binary numbers are not independent → they are derived from smaller numbers.
+
+0 → 0
+1 → 1
+2 → 10
+3 → 11
+4 → [10][0]   <-- dp[10] + (i & 1 yaniki last digit, 0 ya 1)
+5 → [10][1]
+6 → [11]0
+7 → [11]1
+
+So:
+bits(6) = bits(4) + 1
+bits(4) = bits(0) + 1
+
+
+===
+O(nlogn)
 class Solution {
 public:
     vector<int> countBits(int n) {
