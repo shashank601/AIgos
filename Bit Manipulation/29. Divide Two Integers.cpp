@@ -232,7 +232,7 @@ int abs(int)
 long labs(long)
 long long llabs(long long)
 
-There is no abs(unsigned int) <------------------------- unfortunatley true
+There is no abs(unsigned int) <------------------------- unsigned dont need abs
 
 
 Why the “ugly” version is the only correct one (without long long)
