@@ -92,8 +92,23 @@ so on so on
 and ek time ayega jb
 do intervals honge [      X(return idhr  hua hoga middle me somewhere)          ] [                             ] 
 
+====
+
+Why “last” works
+
+If i is last in (l, r):
+everything between (l, i) is already gone
+everything between (i, r) is already gone
+So neighbors of i are fixed:
+left = l
+right = r
 
 
+We don’t simulate bursting.
+
+We assume:
+    everything except one balloon is already gone,
+    then compute its cost.
 
 ===
 since ballons are not removed or marked 
