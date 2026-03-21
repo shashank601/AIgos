@@ -1,3 +1,24 @@
+class Solution {
+public:
+    int coinChange(vector<int>& coins, int amount) {
+        vector<int> dp(amount + 1, INT_MAX);    <---- INT_MAX bcz  of min()
+        dp[0] = 0;
+
+        for (int amt = 1; amt <= amount; amt++) {     <--- unbounded knapsack "dont picks", it builds from smaller problem (like lis)
+          
+            for (auto& coin : coins) {
+                if (amt - coin >= 0 && dp[amt - coin] != INT_MAX) {
+                    dp[amt] = min(dp[amt], dp[amt - coin] + 1);
+                }
+            }
+
+        }
+        return dp[amount] == INT_MAX ? -1 : dp[amount];
+    }
+};
+
+
+====
 ordering doesnt matter,
 
 → duplicates irrelevant
@@ -26,24 +47,6 @@ Even if same solution appears multiple times, result unchanged.
 
     
 ====
-class Solution {
-public:
-    int coinChange(vector<int>& coins, int amount) {
-        vector<int> dp(amount + 1, INT_MAX);    <---- INT_MAX bcz  of min()
-        dp[0] = 0;
-
-        for (int amt = 1; amt <= amount; amt++) {     <--- unbounded knapsack "dont picks", it builds from smaller problem (like lis)
-          
-            for (auto& coin : coins) {
-                if (amt - coin >= 0 && dp[amt - coin] != INT_MAX) {
-                    dp[amt] = min(dp[amt], dp[amt - coin] + 1);
-                }
-            }
-
-        }
-        return dp[amount] == INT_MAX ? -1 : dp[amount];
-    }
-};
 
 ===
 finalyy:
@@ -131,6 +134,11 @@ Think in terms of building up answers instead of “trying all options”
 
 Recursive approach: “Try 0…k coins of this type, then recurse” → easy to imagine, but exponentially many combinations.
 Bottom-up approach: “I know the answer for smaller amounts, can I use it to get the answer for this amount?” → linear in amount × number of coins.
+
+    
+    
+
+    
 ====
 You think:
 
@@ -155,54 +163,15 @@ You recompute it.
 
 ===
 
-You are modeling:
+modeling:
 state = sequence of picks
 
-But the problem only depends on:
-state = remaining amount
-===
-
-You are still thinking in terms of picking.
-Unbounded knapsack is not about picking.
-
-It is about:
-evaluating all ways to form current state using smaller states
-
-===
-Not:
-"pick a coin"
-
-But:
-"try every choice as the LAST step to build current amount"
-
-  
-====
-You were solving:
-“How many ways can I pick counts of coins?”
-
-Instead of:
-“What’s the best answer for smaller amounts and reuse it?”
-
+model hi wrong h!
 
 ===
 
     take (inf supply)
     skip
-====
-
-
-For counting problem
-
-Wrong loop:
-dp[j] sees states formed by different coin orders
-→ counts permutations → wrong
-
-8. For min problem
-Wrong loop:
-dp[j] sees extra states
-
-But:
-min just picks best → extra states don’t corrupt answer
 
 =====
 Loop order controls:
@@ -218,3 +187,18 @@ which states dp[j] is allowed to read from
 
 
 reads per cell is same the diff of perm and comdn comes from what we get from those reads ?
+ha!
+====
+
+Where “extra info” comes from
+Not extra reads.
+
+But:
+dp[j - coin] contains MORE mixed history
+
+6. Key contrast
+coin-first:
+dp[j - coin] = clean (only past coins)
+
+amount-first:
+dp[j - coin] = contaminated (includes all coins)
