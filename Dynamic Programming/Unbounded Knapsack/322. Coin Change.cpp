@@ -1,3 +1,9 @@
+ordering doesnt matter,
+
+loop order dont matter
+differnet maths
+
+====
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
