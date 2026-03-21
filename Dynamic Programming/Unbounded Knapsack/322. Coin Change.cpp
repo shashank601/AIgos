@@ -1,8 +1,30 @@
 ordering doesnt matter,
 
-loop order dont matter
-differnet maths
+→ duplicates irrelevant
+Suppose:
+2 + 3 = 2 coins
+3 + 2 = 2 coins
+Both give same value.
+When you do:
+min(2, 2) = 2
+Duplicate paths collapse automaticall
+=====
+In problme coin chnage 2
 
+In counting:
+2 + 3 and 3 + 2
+
+both contribute → double count
+So order had to be controlled.
+
+Even if same solution appears multiple times, result unchanged.
+
+| Property          | Addition         | Min       |
+| ----------------- | ---------------- | --------- |
+| duplicate paths   | counted again ❌  ignored ✅|
+| order sensitivity | YES              | NO        |
+
+    
 ====
 class Solution {
 public:
@@ -134,11 +156,9 @@ You recompute it.
 ===
 
 You are modeling:
-
 state = sequence of picks
 
 But the problem only depends on:
-
 state = remaining amount
 ===
 
@@ -168,3 +188,33 @@ Instead of:
 
     take (inf supply)
     skip
+====
+
+
+For counting problem
+
+Wrong loop:
+dp[j] sees states formed by different coin orders
+→ counts permutations → wrong
+
+8. For min problem
+Wrong loop:
+dp[j] sees extra states
+
+But:
+min just picks best → extra states don’t corrupt answer
+
+=====
+Loop order controls:
+which states dp[j] is allowed to read from
+
+
+| Property        | coin-first              | amount-first     |
+| --------------- | ----------------------- | ---------------- |
+| reads per cell  | same                    | same             |
+| source of reads | controlled (phase-wise) | mixed (no phase) |
+| dp meaning      | combinations            | permutations     |
+====
+
+
+reads per cell is same the diff of perm and comdn comes from what we get from those reads ?
