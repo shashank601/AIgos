@@ -7,7 +7,7 @@ public:
 
             for (int sq = 1; sq * sq <= num; sq++) {                             <-- perfect squares ≤ num: 1², 2², 3²
                 if (num - sq * sq < 0 || dp[num - sq*sq] == INT_MAX) continue;
-                dp[num] = min(dp[num], dp[num - sq*sq] + 1);
+                dp[num] = min(dp[num], dp[num - sq*sq] + 1);                  <-- (num - sq*sq asking) Is leftover exist ?
             }
         }
 
