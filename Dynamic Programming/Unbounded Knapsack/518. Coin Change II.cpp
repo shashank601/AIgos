@@ -32,7 +32,7 @@ felt hacky;
 class Solution {
 public:
     int change(int amount, vector<int>& coins) {
-        vector<unsigned long long> dp(amount + 1, 0);
+        vector<unsigned long long> dp(amount + 1, 0);     <-- cant predict this type w/o seeing an error msg
         dp[0] = 1;
 
         for (int coin : coins) {
@@ -55,25 +55,10 @@ So sequences like:
 
 2 + 3
 3 + 2
-
-are counted separately.
-Now check wrong loop
-for (j)
-    for (coin)
-        dp[j] += dp[j - coin];
-
-At dp[j], you are using:
-dp[j - coin] which may already include FUTURE coins
-
-So invariant breaks.
-You lose meaning of dp[j].
-
-
-
+    
 coin outer = restrict decision order
 
   
-That’s permutations.
 ====
 
 Recursive DP:
