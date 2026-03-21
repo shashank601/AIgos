@@ -1,5 +1,4 @@
-a for loop style recusiron fails due to ordering issues
-====
+
 class Solution {
 public:
     int g(int idx, int amount, vector<int>& coins, auto& dp) {  <--- cant decrese the dimension   (idx is needed to knwo which coin im allowed to use)
@@ -59,6 +58,8 @@ So sequences like:
 coin outer = restrict decision order
 
   
+====
+a for loop style recusiron w/o idx fails due to ordering issues
 ====
 
 Recursive DP:
