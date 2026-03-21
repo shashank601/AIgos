@@ -156,3 +156,9 @@ You were solving:
 
 Instead of:
 “What’s the best answer for smaller amounts and reuse it?”
+
+
+===
+
+    take (inf supply)
+    skip
