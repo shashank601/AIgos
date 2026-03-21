@@ -1,7 +1,7 @@
 class Solution {
 public:
     int coinChange(vector<int>& coins, int amount) {
-        vector<int> dp(amount + 1, INT_MAX);
+        vector<int> dp(amount + 1, INT_MAX);    <---- INT_MAX bcz  of min()
         dp[0] = 0;
 
         for (int amt = 1; amt <= amount; amt++) {     <--- unbounded knapsack "dont picks", it builds from smaller problem (like lis)
