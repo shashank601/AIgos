@@ -14,3 +14,8 @@ public:
         return dp[n];
     }
 };
+
+===
+for recursive style 
+i can compute a cost array: conating all perf sq.
+then recur can just take/skip assuming inf supply
