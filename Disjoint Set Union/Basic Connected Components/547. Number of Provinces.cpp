@@ -1,6 +1,6 @@
 class Solution {
 public:
-    vector<int> parent;                       <-- -1
+    vector<int> parent;                       <-- -1   (apparently other default or more std value is i itself, init: parent[i] = i )
     vector<int> rank;                        <-- 0
     int find(int node) {
         int root = node;
