@@ -1,7 +1,7 @@
 class Solution {
 public:
-    vector<int> parent;
-    vector<int> rank;
+    vector<int> parent;                       <-- -1
+    vector<int> rank;                        <-- 0
     int find(int node) {
         int root = node;
         while (parent[root] != -1) {
@@ -28,9 +28,9 @@ public:
             else if (rank[p1] > rank[p2]) {
                 parent[p2] = p1;
             }
-            else {
+            else {    
                 parent[p2] = p1;
-                rank[p1]++;
+                rank[p1]++;                        <-- rank only inc if they are same
             }
         }
     }
