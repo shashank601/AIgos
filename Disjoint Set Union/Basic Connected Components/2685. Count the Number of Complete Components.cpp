@@ -52,7 +52,7 @@ public:
 
         // for (auto& edge : edges) {
         //     int repr = find(edge[0]);                        <-- root is representative of coponents(we count node or edge per COMPONENETS) 
-        //     nodes[repr] += 2;
+        //     nodes[repr] += 2;                                    <-- 2 edges doesnt mean 4 nodes eg. [1 0] [0 2]
         //     edgesCount[repr]++;
         // }
 
