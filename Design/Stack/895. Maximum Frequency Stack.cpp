@@ -166,3 +166,11 @@ public:
  * obj->push(val);
  * int param_2 = obj->pop();
  */
+
+==========
+
+a ds that give O 1  erase
+and follows fifo ?
+
+list<int> q;
+unordered_map<int, list<int>::iterator> mp;
