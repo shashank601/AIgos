@@ -39,3 +39,11 @@ else {
 
 explaination later
 
+=========
+
+(i, j)  depend on:
+
+(i+1, j+1)
+(i+1, j)
+(i, j+1)
+
