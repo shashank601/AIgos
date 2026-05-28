@@ -207,3 +207,35 @@ dp[j - coin] = clean (only past coins)
 
 amount-first:
 dp[j - coin] = contaminated (includes all coins)
+
+
+
+
+
+
+
+=============
+
+
+coin change 1 => combinations  => in this we use min so both styles works (coin-first or amt-first)
+coin change 2 => combinations  => in this only coin first works due to += the amount first approach failes (over counts)
+
+
+
+When coins come FIRST:
+
+You fully lock in coin #1 before ever touching coin #2
+Once coin #2 processes, all "coin #1" ways are frozen
+You can only build on existing combinations
+Guarantees order: smaller coins processed first
+---------------
+
+    
+When amount comes FIRST:
+
+At amount=2, you update dp[2] using BOTH coin 1 AND coin 2 in the same iteration
+When you hit amount=3, dp[2] already contains ways from multiple coins
+You add those mixed ways together, creating duplicates
+Allows reordering: coin 1 then coin 2, OR coin 2 then coin 1
+
+resulted in permutations instead of combinations  (output more than expected)
