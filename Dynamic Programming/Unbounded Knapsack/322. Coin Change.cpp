@@ -29,6 +29,9 @@ Both give same value.
 When you do:
 min(2, 2) = 2
 Duplicate paths collapse automaticall
+
+
+in coin change two we actually use += insetad of min to get all paths
 =====
 In problme coin chnage 2
 
@@ -183,6 +186,8 @@ which states dp[j] is allowed to read from
 | reads per cell  | same                    | same             |
 | source of reads | controlled (phase-wise) | mixed (no phase) |
 | dp meaning      | combinations            | permutations     |
+
+coin first is combinations
 ====
 
 
