@@ -117,4 +117,58 @@ Iterate over values because:
 constriant is small
 -----------------
 
-  
+	still why check all multiples?
+
+
+	"For a candidate x, how do we know checking the gcd of all multiples covers every possible subsequence case?"
+
+	Now define:
+
+G=gcd(S)
+meaning:
+Take all multiples of 6 and calculate their gcd.
+Example:
+S={12,18,30}
+
+then:
+G=gcd(12,18,30)=6
+
+	
+Now the key theorem:
+For any subset T of S:
+gcd(subset T)≥gcd(S)   (removing num remove restrictions)
+
+
+
+Now there are only two cases.
+
+Case 1:
+gcd(S)=x
+
+all multiples of 6:
+12,18,30
+gcd = 6
+Then we already found a valid subsequence:
+
+
+Case 2:
+gcd(S) > x
+	
+Example:
+all multiples of 5:
+10,20,30
+gcd = 10
+Could some subset have gcd 5?
+
+	NO CHANCE 
+	A subset can only go upward
+
+
+
+
+we are not checking one random subset.
+We are checking the best possible case.
+
+It gives the smallest gcd achievable.
+If even that is not x, nothing can be x.
+If it is x, that set itself is the answer.
